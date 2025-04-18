@@ -4,7 +4,6 @@ import subprocess
 import json
 from config import Config
 from pathlib import Path
-from db import insert_missing_transcript
 import os
 
 
@@ -87,7 +86,6 @@ def download_transcript(video_id):
         print(f"✅ Transcript saved for {video_id}")
     except subprocess.CalledProcessError as e:
         print(f"⚠️ Could not download transcript for {video_id}: {e.stderr}")
-        insert_missing_transcript(video_id, channel_id, title)
 
 # File: ingest/transcript_ingestion.py
 
@@ -103,7 +101,7 @@ def fetch_transcripts_for_channel(channel_id: str, output_dir: str, max_results:
     try:
         print(f"🔄 Fetching up to {max_results} videos from channel: {channel_id}")
         # Construct the channel URL
-        channel_url = f"https://www.youtube.com/channel/{channel_id}/videos"
+        channel_url = f"https://www.youtube.com/{channel_id}/videos"
 
         # Build the yt-dlp command
         cmd = [
