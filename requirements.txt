@@ -1,0 +1,9 @@
+# requirements.txt
+psycopg2-binary           # PostgreSQL connector
+pgvector                  # Vector extension for PostgreSQL
+ollama                    # Interface to run and embed with Ollama models
+numpy                     # Needed for embedding array handling
+yt-dlp                    # For downloading YouTube video metadata and transcripts
+python-dotenv             # To load environment variables
+numpy
+click
