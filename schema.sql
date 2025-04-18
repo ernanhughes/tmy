@@ -97,3 +97,12 @@ CREATE TABLE IF NOT EXISTS missing_transcripts (
     title TEXT,
     attempted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE IF NOT EXISTS transcript_segments (
+    id SERIAL PRIMARY KEY,
+    video_id TEXT,
+    start_time FLOAT,
+    end_time FLOAT,
+    text TEXT,
+    embedding VECTOR(1024) -- assuming pgvector and 1024-dim
+);
